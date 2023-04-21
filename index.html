@@ -11,23 +11,85 @@
   </head>
   <body>
 
-    <div class="black-bg">
-        <div class="white-bg">
+    <div class="black-bg" id="box">
+        <div class="white-bg" >
           <h4>로그인하세요</h4>
-          <button class="btn btn-danger" id="close">닫기</button>
+          <form action="success.html">
+            <div class="my-3">
+              <input type="text" class="form-control" id="email">
+             </div>
+             <div class="my-3">
+               <input type="password" class="form-control" id="password">
+             </div>
+             <button type="submit" class="btn btn-primary" id="send">전송</button>
+             <button type="button" class="btn btn-danger" id="close">닫기</button>
+          </form> 
         </div>
       </div> 
      </div>
 
+     <script>
+
+        $('form').on('submit', function (e) {
+          if (document.getElementById('email').value == '') {
+            alert('아이디 입력하쇼');
+          } else if (document.getElementById('password').value == '') {
+            alert('비밀번호 입력하쇼');
+          } else if (document.getElementById('password').value == '') {
+            alert('비밀번호 입력하쇼');
+          }
+        });
+
+        $('#close').on('click', function(){
+             $('.black-bg').removeClass('show-modal');
+        })
+  
+     </script>
 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <span class="navbar-brand">Navbar</span>
+          <span class="navbar-brand">JSShop</span>
+          <span class="badge bg-dark">Dark 🔄</span>
           <button class="navbar-toggler" type="button">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
       </nav> 
+
+      <script>
+        var count = 0;
+        
+        $('.badge').on('click', function(){
+          count+=1;
+          if(count%2==0){
+            $('.badge').html('Light');
+          }else{
+            $('.badge').html('Dark')
+          }
+        });
+        
+      </script>
+
+<div class="alert alert-danger" id="alert">
+  <span id="num">5</span>초 이내 구매시 사은품 증정
+</div>
+
+<script>
+
+  var count = 5;
+
+  setInterval(function(){
+    count -= 1;
+    if (count >= 0){
+      document.querySelector('#num').innerHTML = count;
+    } 
+    if(count==0){
+      document.getElementById('alert').style.display = 'none'
+    }
+  }, 1000);
+
+</script>
+
 
       <ul class="list-group" id="test1">
         <li class="list-group-item">An item</li>
@@ -37,7 +99,10 @@
         <li class="list-group-item">And a fifth one</li>
       </ul> 
 
-      <button id="login">로그인</button>
+      <div class="main-bg">
+        <h4>Shirts on Sale</h4>
+        <button id="login" class="btn btn-danger">로그인</button>
+      </div>
 
       <script>
 
